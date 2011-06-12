@@ -13,7 +13,7 @@ class TCMS extends Controller {
             if(method_exists ( $this , $p) ) {
                 $this->$p();
             } else {
-	        echo "Page Not Found!";
+	        $this->index();
 	    }
         }
     }
