@@ -6,15 +6,11 @@ class TCMS extends Controller {
     public function __construct() {
         parent::__construct();
         
-        if ( ! isset($_GET['page']) ) {
+        if ( ! isset($_GET['page']) || ! method_exists ( $this , htmlentities($_GET['page']) ) ) {
             $this->index();
         } else {
             $p = htmlentities($_GET['page']);
-            if(method_exists ( $this , $p) ) {
-                $this->$p();
-            } else {
-	        $this->index();
-	    }
+            $this->$p();
         }
     }
     
