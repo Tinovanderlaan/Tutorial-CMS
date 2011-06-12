@@ -10,8 +10,11 @@ class TCMS extends Controller {
             $this->index();
         } else {
             $p = htmlentities($_GET['page']);
-            
-            $this->$p();
+            if(method_exists ( $this , $p) ) {
+                $this->$p();
+            } else {
+	        echo "Page Not Found!";
+	    }
         }
     }
     
